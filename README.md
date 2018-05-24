@@ -1,13 +1,3 @@
-# DojoJS
-This is the official holding place of the DojoJS JavaScript library and addons. This library is protected under the MIT License. If you wish to use it for things like a custom IDE for you to use and you alone, it is fine. Publicly, just be sure you let your customers know that you did not develop DojoJS.
-
-## Info
-**Version:** 0.0.1
-**Addons:** There are currently no addons.
-**Availability:** Download not required.
-**Copyright:** Copyright © 2018 by CodeDojo and/or it's individual developers. All rights reserved.
-**License:** MIT License
-
 DojoJS
 ====
 
@@ -35,3 +25,38 @@ function draw() {
 ```
 
 The best part of this is that you can set a color before, and it won't effect the background! The background color also won't affect the drawing of future objects!
+
+### Trick 2: Store colors
+
+In DojoJS, when you set a color with `color(args)`, DojoJS stores the color in a color object. To create and manipulate one is as easy at it could possibly be!
+
+```javascript
+let myColor = new Color(255, 127, 0, 60); // rgba format
+
+let red = myColor.red;
+let green = myColor.green;
+let blue = myColor.blue;
+let alpha = myColor.alpha;
+
+red = 0; // Does not affect the myColor variable.
+
+myColor.red = red; // Affects the myColor variable's red value.
+```
+
+In case you were wondering, to use an HSB color code set, you can use this code.
+>Fun Fact: HSB stands for Hue, Saturation, and Brightness. Alpha stays the same. This mode can be used for examples were you want bright, festive colors, and not just have random RGB color values.
+
+```javascript
+let hsbColor = new HSBColor(0, 255, 255, 160); // Same as RGBA format: 255, 0, 0, 160 or bright red.
+
+let hue = hsbColor.colorCode;
+let saturation = hsbColor.saturation;
+let brightness = hsbColor.brightValue;
+let alpha = hsbColor.alpha;
+
+saturation = 170; // Again, does not affect myColor's saturation value.
+
+hsbColor.saturation = saturation; // Does, in fact, affect the color's saturation value.
+```
+
+You also don't need to worry about color conversions. You can use `RGBtoHSB()` or `HSBtoRGB()`, no prefix needed, with three or four parameters for no alpha vs alpha respectively.
